@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>隨機四色組合</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+    }
+
+    .result {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #222;
+      padding: 15px;
+      border-radius: 12px;
+      width: 100px;
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🎲 隨機四色組合</h1>
+  <button onclick="draw()">抽一組</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const groups = {
+      white: [
+        { name: "白鏡", img: "white-mirror.png" },
+        { name: "白巫師", img: "white-wizard.png" },
+        { name: "白狗", img: "white-dog.png" },
+        { name: "白世界橋", img: "white-world-bridge.png" },
+        { name: "白風", img: "white-wind.png" }
+      ],
+      red: [
+        { name: "紅地球", img: "red-earth.png" },
+        { name: "紅天行者", img: "red-skywalker.png" },
+        { name: "紅月", img: "red-moon.png" },
+        { name: "紅蛇", img: "red-serpent.png" },
+        { name: "紅龍", img: "red-dragon.png" }
+      ],
+      blue: [
+        { name: "藍風暴", img: "blue-storm.png" },
+        { name: "藍鷹", img: "blue-eagle.png" },
+        { name: "藍猴", img: "blue-monkey.png" },
+        { name: "藍手", img: "blue-hand.png" },
+        { name: "藍夜", img: "blue-night.png" }
+      ],
+      yellow: [
+        { name: "黃太陽", img: "yellow-sun.png" },
+        { name: "黃戰士", img: "yellow-warrior.png" },
+        { name: "黃人", img: "yellow-human.png" },
+        { name: "黃星星", img: "yellow-star.png" },
+        { name: "黃種子", img: "yellow-seed.png" }
+      ]
+    };
+
+    function randomPick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function draw() {
+      const resultDiv = document.getElementById("result");
+
+      const picks = [
+        randomPick(groups.white),
+        randomPick(groups.red),
+        randomPick(groups.blue),
+        randomPick(groups.yellow)
+      ];
+
+      resultDiv.innerHTML = picks.map(item => `
+        <div class="card">
+          <img src="maya-glyphs/${item.img}">
+          <div>${item.name}</div>
+        </div>
+      `).join("");
+    }
+  </script>
+
+</body>
+</html>
