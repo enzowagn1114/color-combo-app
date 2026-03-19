@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>隨機四色組合</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #111;
+      color: #fff;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎲 隨機四色組合</h1>
+  <button onclick="draw()">抽一組</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const white = ["白鏡", "白巫師", "白狗", "白世界橋", "白風"];
+    const red = ["紅地球", "紅天行者", "紅月", "紅蛇", "紅龍"];
+    const blue = ["藍風暴", "藍鷹", "藍猴", "藍手", "藍夜"];
+    const yellow = ["黃太陽", "黃戰士", "黃人", "黃星星", "黃種子"];
+
+    function randomPick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function draw() {
+      const result = [
+        randomPick(white),
+        randomPick(red),
+        randomPick(blue),
+        randomPick(yellow)
+      ];
+
+      document.getElementById("result").innerText = result.join(" + ");
+    }
+  </script>
+
+</body>
+</html>
